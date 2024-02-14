@@ -74,9 +74,19 @@ ui <- fluidPage(
           numericInput("sigma", label=NULL, value=1)
         ),
         # Confidence Level
-        
+        div(
+          shinyWidgets::numericInputIcon(
+            "confLevel", 
+            "Confidence Interval %:",
+            value = 95,
+            min=80,
+            max=99.99,
+            step=0.01,
+            icon=list(NULL, icon("percent", verify_fa=F)),
+            help_text="Range limited to 80-99.99%")
+        ),
         # Sample Size
-
+        numericInput("sampleSize", "Sample Size:", value=10, min=2, max=1e2),
         actionButton(inputId="apply", label="Apply Parameters", width="100%"),
         hr(),
         h4("Generate Data"),
@@ -125,7 +135,48 @@ ui <- fluidPage(
       )
     ),
     div(
-      id="mainSection"
+      id="mainSection",
+      # Top Row
+      div(
+        
+        div(
+          # Attributes/Statistics Table
+          
+        ),
+        div(
+          # Visual of Confidence Interval Coverage
+          
+        )
+      ),
+      # Bottom Row
+      div(
+        div(
+          # Current Sample's Information
+          div(
+            # Histogram
+          ), 
+          div(
+            # Table 
+            # 
+            # Example:
+            # Name 	  Value
+            # Min 	  -2.04
+            # Q1 	    -0.841
+            # Median 	0.023
+            # Q3 	    1.018
+            # Max 	  2.154
+            # Mean 	  0.066
+            # SD 	    1.23
+            # 
+            # Calculated Interval: (-0.54, 0.67)
+            # 
+          )
+        ),
+        div(
+          # Distribution of Sample Means
+          
+        )
+      )
     )
   )
 )
