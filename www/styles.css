@@ -1,0 +1,107 @@
+.shiny-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.shiny-row {
+  display: flex;
+  flex-direction: row;
+}
+
+#sidebarSection {
+  display: flex;
+  flex-direction: column;
+  min-height: 70vh;
+  width: 200px;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #434343;
+  border: 1px solid #333333;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+  color:#ffffff;
+}
+
+#mainSection {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  margin-bottom:5px;
+}
+
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+
+  /* Centering the loader */
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+}
+
+
+.greyed-out {
+  background: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  position: fixed; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 990;
+
+  /* Using flexbox to center the loader */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Stack child elements vertically */
+}
+
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#spinnerContainer .shinybusy, #spinnerContainer .shinybusy-ready {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* .view-data: see utils/view_datatable.R */
+
+.view-data .dataTables_paginate {
+  float: left !important;
+  text-align: left !important;
+}
+
+.view-data .dataTables_info {
+  color: #777 !important;
+    margin-left: 2px !important;
+  margin-right: 12px !important;
+}
+
+.view-data .paginate_button {
+  padding: 1.5px !important;
+  margin-top: 5px !important;
+}
+
+.view-data .dataTable {
+  width: 100% !important;
+}
+
+/* end .view-data */
+
+
+
