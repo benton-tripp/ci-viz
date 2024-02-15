@@ -146,7 +146,7 @@ ui <- fluidPage(
         ),
         div(
           # Visual of Confidence Interval Coverage
-          
+          plotOutput("ci_plot", width="600px")
         )
       ),
       # Bottom Row
