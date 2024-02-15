@@ -115,6 +115,7 @@ ui <- fluidPage(
           )
         )
       ),
+      hr(),
       tags$button(
         id="resetData",
         type="button",

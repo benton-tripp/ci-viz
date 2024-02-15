@@ -3,10 +3,10 @@
 [original](https://shiny.stat.ncsu.edu/jbpost2/CIVis/)
 
 
-This app facilitates understanding confidence interval coverage rates by simulating data 
-from a user-defined normal distribution, allowing for the adjustment of sample size and 
-confidence level. It graphically represents one-sample Z intervals, where the population 
-standard deviation is presumed known, and demonstrates the intervals' efficacy in 
-encompassing the true mean through repeated sampling up to 10,000 times. The app provides 
-details on the latest sample and displays the sampling distribution of sample means with 
-visual demarcations for intervals that do and do not contain the true mean.
+The app is designed to help users visualize confidence intervals by generating data from 
+a normal distribution with user-specified parameters. It constructs one-sample Z intervals
+assuming a known population standard deviation and allows examination of how these intervals 
+cover the true mean across numerous samples. The interface shows the intervals' performance
+over up to 10,000 samples and includes a histogram to depict the distribution of sample means,
+highlighting instances where the true mean is both included and excluded by the generated
+intervals. Details on the most recent sample are readily available for user reference.
