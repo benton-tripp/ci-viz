@@ -12,9 +12,9 @@
   display: flex;
   flex-direction: column;
   min-height: 70vh;
-  width: 200px;
-  padding: 15px;
-  margin-bottom: 20px;
+  width: 29.2vh;
+  padding: 2vh;
+  margin-bottom: 1vh;
   background-color: #434343;
   border: 1px solid #333333;
   border-radius: 4px;
@@ -28,6 +28,58 @@
   flex-direction: column;
   margin: 15px;
   margin-bottom:5px;
+}
+
+.bordered-cell {
+  border: 1px solid #333333;
+  border-radius: 0.5px;
+}
+
+#attributesTableArea {
+  height:40vh; 
+  width:35vh; 
+  margin-right:1.2vh; 
+  background-color: #edf0f7;
+}
+
+.plot-tab {
+  border: 1px solid #333333;
+  border-top: 0;
+}
+
+.plot-area {
+  width: 145vh;
+  height: 40vh;
+}
+
+#tabs.nav-tabs {
+  border-bottom: 1px solid #333;
+}
+
+#tabs > li > a:hover {
+  background-color: rgb(0,0,0,0) !important;
+  border-bottom-width: 0 !important;
+  top:-1px !important;
+}
+
+#tabs > li.active > a, 
+#tabs > li.active > a:focus, 
+#tabs > li.active > a:hover {
+  border-left-color: #333 !important;
+  border-top-color: #333 !important;
+  border-right-color: #333 !important;
+  border-bottom-width: 0 !important;
+  background-color: #fff !important;
+  top:0 !important;
+}
+
+#bottomRow {
+  border: 1px solid #333333;
+  border-radius: 0.5px;
+  width: 181.5vh;
+  height: 39vh;
+  margin-top: 1.5vh;
+  background-color: #edf0f7;
 }
 
 

@@ -15,6 +15,7 @@ datasets.module <- function(input, output, session, server.env) {
       )
     })
     datasets <- min(1e4, datasets + new.ds)
+    assign("apply.from.ds", T, server.env)
     assign("datasets", datasets, envir=server.env)
     shinyjs::click("apply")
   }, ignoreInit=T, ignoreNULL=T)

@@ -7,6 +7,7 @@ suppressWarnings(
     library(data.table)
     library(ggplot2)
     library(DT)
+    library(purrr)
   })
 )
 
@@ -38,7 +39,7 @@ server <- function(input, output, session) {
   }) %>% do.call("cbind", .)
   
   # Initiate other variables 
-  apply.from.ds <- F
+  apply.from.ds <- T
   
   # Load modules
   # <module.function>(input, output, session, server.env)

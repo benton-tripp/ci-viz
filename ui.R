@@ -137,20 +137,58 @@ ui <- fluidPage(
     ),
     div(
       id="mainSection",
-      # Top Row
       div(
-        
+        class="shiny-row",
         div(
-          # Attributes/Statistics Table
-          
+          div(
+            style="height:32px;",
+            h4("Attributes/Statistics Summary")
+          ),
+          div(
+            class="bordered-cell",
+            id="attributesTableArea"
+            # Attributes/Statistics Table
+            
+          )
         ),
-        div(
-          # Visual of Confidence Interval Coverage
-          plotOutput("ci_plot", width="600px")
+        shiny::tabsetPanel(
+          id="tabs", 
+          tabPanel(
+            # Confidence Interval Coverage Plots
+            title="C.I. Interval Coverage Plots",
+            div(
+              class="plot-tab",
+              div(
+                class="plot-area",
+                plotOutput("ci_plot", width="100%", height="100%")
+              )
+            )
+          ),
+          tabPanel(
+            title="Cumulative Coverage Proportion Plot",
+            div(
+              class="plot-tab",
+              div(
+                class="plot-area",
+                plotOutput("cdist_plot", width="100%", height="100%")
+              )
+            )
+          ),
+          tabPanel(
+            title="Running C.I. Coverage Plot",
+            div(
+              class="plot-tab",
+              div(
+                class="plot-area",
+                plotOutput("rci_plot", width="100%", height="100%")
+              )
+            )
+          )
         )
       ),
       # Bottom Row
       div(
+        id="bottomRow",
         div(
           # Current Sample's Information
           div(
@@ -158,24 +196,13 @@ ui <- fluidPage(
           ), 
           div(
             # Table 
-            # 
-            # Example:
-            # Name 	  Value
-            # Min 	  -2.04
-            # Q1 	    -0.841
-            # Median 	0.023
-            # Q3 	    1.018
-            # Max 	  2.154
-            # Mean 	  0.066
-            # SD 	    1.23
-            # 
-            # Calculated Interval: (-0.54, 0.67)
-            # 
+          
           )
         ),
         div(
+          style="width:70vh;",
           # Distribution of Sample Means
-          
+          plotOutput("sm_dist", width="100%")
         )
       )
     )

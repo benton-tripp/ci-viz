@@ -6,6 +6,40 @@ tables.module <- function(input, output, session, server.env) {
   observeEvent(input$renderTables, {
     datasets <- get("datasets", server.env)
     samples <- get("samples", server.env)
+    dt <- get("dt", server.env)
+    mu <- get("mu", server.env)
+    s <- get("s", server.env)
+    cl <- get("cl", server.env)
+    n <- get("n", server.env)
+    
+    # browser()
+    
+    # Attribute 	      Statistic
+    # ---------------------------
+    # # Intervals 	    <value>
+    # # Covering Mean 	<value>
+    # Coverage % 	      <value>
+    
+    att.tbl <- dt[, .(
+      `# Intervals`=.N, 
+      `# Covering Mean`=sum(lg.icm), 
+      `Coverage %`=sum(lg.icm)/.N
+    )] %>%
+      data.table::transpose(keep.names="Attribute") %>%
+      setnames("V1", "Statistic")
+    
+    # Name 	  Value
+    # -------------
+    # Min 	  <value>
+    # Q1 	    <value>
+    # Median 	<value>
+    # Q3 	    <value>
+    # Max 	  <value>
+    # Mean 	  <value>
+    # SD 	    <value>
+    # 
+    # Calculated Interval: (<lower>, <upper>)
+
     
     print(nrow(samples))
     js$finishedLoading()
