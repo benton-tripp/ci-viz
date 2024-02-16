@@ -26,6 +26,10 @@ datasets.module <- function(input, output, session, server.env) {
       setnames(data.table(numeric(0)), "V1", paste0("n", .x))
     }) %>% do.call("cbind", .)
     
+    # Update Sample DS Max
+    updateSliderInput(session, inputId="sampleDataset", 
+                       value=1, max=1)
+    
     assign("datasets", 1, envir=server.env)
     assign("samples", samples, envir=server.env)
     assign("apply.from.ds", T, server.env)

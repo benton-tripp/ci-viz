@@ -29,7 +29,8 @@ plots.module <- function(input, output, session, server.env) {
                    lower.ci=lower.ci,
                    upper.ci=upper.ci,
                    lg.icm=icm,
-                   interval.contains.mean=factor(icm, levels=c("FALSE", "TRUE")))
+                   interval.contains.mean=factor(icm, 
+                                                 levels=c("FALSE", "TRUE")))
       })
     
     # C.I. Plot
@@ -60,7 +61,8 @@ plots.module <- function(input, output, session, server.env) {
     dt$diff.means <- mu - dt$yhat
     dt[, composite.rank := frank(diff.means * (ifelse(lg.icm, 1, 1e3)))]
     
-    sorted.plt <- ggplot(dt, aes(x=composite.rank, ymin=lower.ci, ymax=upper.ci,
+    sorted.plt <- ggplot(dt, aes(x=composite.rank, 
+                                 ymin=lower.ci, ymax=upper.ci,
                                  color=interval.contains.mean)) +
       geom_errorbar(aes(y=mu), width=0.1) +
       geom_point(aes(y=yhat)) +
@@ -141,7 +143,9 @@ plots.module <- function(input, output, session, server.env) {
       scale_color_manual(values=c("FALSE"="red", "TRUE"="black")) +
       scale_alpha_manual(values=c("FALSE"=1, "TRUE"=0)) +
       guides(fill="none", color="none", alpha="none") +
-      labs(x="Sample #", y=paste0("Sample Mean ", cl, "% C.I.\nRunning Coverage")) +
+      labs(x="Sample #", 
+           y=paste0("Sample Mean ", cl, 
+                    "% C.I.\nRunning Coverage")) +
       theme(
         axis.title.x=element_text(size=rel(1.5)),  
         axis.title.y=element_text(size=rel(1.5)), 
@@ -166,10 +170,14 @@ plots.module <- function(input, output, session, server.env) {
     # Show vertical lines to indicate where larger or smaller values 
     # yields an interval that doesn't capture the mean
     sm.dist <- ggplot(data=dt, aes(x=yhat, y=after_stat(density))) +
-      geom_histogram(fill="white", color="black") + 
-      geom_density(color="darkred", 
-                   linetype="dashed", 
-                   linewidth=1.2) + 
+      geom_histogram(fill="#edf0f7", color="black",
+                     bins=max(1, min(floor(nrow(dt)/1.3), 30)))
+    if (nrow(dt) >= 20) {
+      sm.dist <- sm.dist + geom_density(color="darkred", 
+                                        linetype="dashed", 
+                                        linewidth=1.2)
+    }
+    sm.dist <- sm.dist + 
       theme_bw() +
       theme(
         axis.title.x=element_text(size=rel(1.5)),  
@@ -211,9 +219,6 @@ plots.module <- function(input, output, session, server.env) {
         theme(plot.margin=margin(0, 0, 0, 0, "mm"), 
               plot.title=element_blank())
     output$qq_plot <- renderPlot(qq.plt)
-
-    
-    
     
     # Assign `dt` to server environment
     assign("dt", value=dt, envir=server.env)

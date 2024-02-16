@@ -47,6 +47,7 @@ server <- function(input, output, session) {
   datasets.module(input, output, session, server.env)
   plots.module(input, output, session, server.env)
   tables.module(input, output, session, server.env)
+  sample.summary.module(input, output, session, server.env)
   
   # Load initial plots/stats/data
   shinyjs::click("apply")

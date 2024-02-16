@@ -12,16 +12,14 @@ tables.module <- function(input, output, session, server.env) {
     cl <- get("cl", server.env)
     n <- get("n", server.env)
     
-    # browser()
-    
     # Attribute 	      Statistic
     # ---------------------------
-    # # Intervals 	    <value>
+    # # of Samples 	    <value>
     # # Covering Mean 	<value>
     # Coverage % 	      <value>
     
     att.tbl <- dt[, .(
-      `# Intervals`=.N, 
+      `# of Samples`=.N, 
       `# Covering Mean`=sum(lg.icm), 
       `Coverage %`=paste0(round(100*sum(lg.icm)/.N, 3),"%")
     )] %>%
@@ -32,26 +30,7 @@ tables.module <- function(input, output, session, server.env) {
       view.datatable(att.tbl, pageLength=3, paging=F, info=F)
     })
     
-    # Sample Summary Table
-    
-    
-    
-    # Selected Sample Summary Table
-    
-    # Name 	  Value
-    # -------------
-    # Min 	  <value>
-    # Q1 	    <value>
-    # Median 	<value>
-    # Q3 	    <value>
-    # Max 	  <value>
-    # Mean 	  <value>
-    # SD 	    <value>
-    # 
-    # Calculated Interval: (<lower>, <upper>)
-
-    
-    print(nrow(samples))
-    js$finishedLoading()
+    trigger.input("triggerSampleSummaries")
   }, ignoreInit=T, ignoreNULL=T)
+  
 }

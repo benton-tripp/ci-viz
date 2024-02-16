@@ -40,6 +40,11 @@ apply.module <- function(input, output, session, server.env) {
       ))
       # Reset `apply.from.ds`
       assign("apply.from.ds", F, server.env)
+      
+      # Update Sample DS Max
+      updateSliderInput(session, inputId="sampleDataset", 
+                         value=isolate(input$sampleDataset), 
+                         max=nrow(samples))
     }
     
     assign("samples", samples, server.env)

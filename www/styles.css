@@ -108,10 +108,22 @@
   width: 32vh;
 }
 
+#sampleTable {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+  background-color: #ffffff;
+  width: 32vh;
+}
+
 #sampleSummarySection {
   min-width:351.6px;
   width:50vh; 
   min-height:83vh;
+}
+
+.slider-animate-container {
+  text-align: left !important;
+  margin-top: -16px !important;
 }
 
 .loader {

@@ -148,34 +148,42 @@ ui <- fluidPage(
           div(
             class="bordered-cell",
             div(
-              id="sampleSummarySection"
-              
+              id="sampleSummarySection",
+              div(
+                style="padding:8px; width: 100%;",
+                div(
+                  class="shiny-row",
+                  style="padding:8px; border:1px solid #333;
+                         background-color:#efefef;",
+                  sliderInput(inputId="sampleDataset", 
+                              label="Sample Dataset #", value=1, 
+                              min=1, max=1, step=1, 
+                              animate=animationOptions(interval=2e3, loop=T)),
+                  span(style="width:50px"),
+                  radioButtons("sampleDisplay", label="Display Type",
+                               choices=c("Plot", "Table"), selected="Plot")
+                )
+              ),
+              conditionalPanel(
+                "input.sampleDisplay==='Plot'",
+                div(
+                  style="padding-right:20px;",
+                  plotOutput("sample_hist", height="350px", width="99%")
+                )
+              ),
+              conditionalPanel(
+                "input.sampleDisplay==='Table'",
+                style="padding: 1vh; padding-left:3vh;",
+                div(
+                  id="sampleTable",
+                  DTOutput("s_table")
+                )
+              )
             )
           )
         ),
         shiny::tabsetPanel(
           id="tabs", 
-          tabPanel(
-            # Confidence Interval Coverage Plots
-            title="C.I. Interval Coverage Plots",
-            div(
-              class="plot-tab",
-              div(
-                class="plot-area-1",
-                div(
-                  class="plot-area-1-sub",
-                  plotOutput("ci_plot", width="100%", height="100%")
-                ),
-                div(
-                  style="border-bottom: 1px solid #333333;"
-                ),
-                div(
-                  class="plot-area-1-sub",
-                  plotOutput("sorted_plot", width="100%", height="100%")
-                )
-              )
-            )
-          ),
           tabPanel(
             title="Distribution of Sample Means",
             div(
@@ -209,7 +217,28 @@ ui <- fluidPage(
             )
           ),
           tabPanel(
-            title="Cumulative & Running Coverage Plots",
+            # Confidence Interval Coverage Plots
+            title="C.I. Coverage Plots",
+            div(
+              class="plot-tab",
+              div(
+                class="plot-area-1",
+                div(
+                  class="plot-area-1-sub",
+                  plotOutput("ci_plot", width="100%", height="100%")
+                ),
+                div(
+                  style="border-bottom: 1px solid #333333;"
+                ),
+                div(
+                  class="plot-area-1-sub",
+                  plotOutput("sorted_plot", width="100%", height="100%")
+                )
+              )
+            )
+          ),
+          tabPanel(
+            title="Cumulative & Running C.I. Coverage Plots",
             div(
               class="plot-tab",
               div(
