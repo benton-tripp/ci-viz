@@ -140,15 +140,17 @@ ui <- fluidPage(
       div(
         class="shiny-row",
         div(
+          style="margin-right:1.5vh",
           div(
-            style="height:32px;",
-            h4("Attributes/Statistics Summary")
+            style="height:40px;",
+            h4("Sample Summary", style="margin:0; padding:10px;")
           ),
           div(
             class="bordered-cell",
-            id="attributesTableArea"
-            # Attributes/Statistics Table
-            
+            div(
+              id="sampleSummarySection"
+              
+            )
           )
         ),
         shiny::tabsetPanel(
@@ -159,50 +161,73 @@ ui <- fluidPage(
             div(
               class="plot-tab",
               div(
-                class="plot-area",
-                plotOutput("ci_plot", width="100%", height="100%")
+                class="plot-area-1",
+                div(
+                  class="plot-area-1-sub",
+                  plotOutput("ci_plot", width="100%", height="100%")
+                ),
+                div(
+                  style="border-bottom: 1px solid #333333;"
+                ),
+                div(
+                  class="plot-area-1-sub",
+                  plotOutput("sorted_plot", width="100%", height="100%")
+                )
               )
             )
           ),
           tabPanel(
-            title="Cumulative Coverage Proportion Plot",
+            title="Distribution of Sample Means",
             div(
               class="plot-tab",
               div(
-                class="plot-area",
-                plotOutput("cdist_plot", width="100%", height="100%")
+                class="plot-area-2 shiny-row",
+                div(
+                  class="plot-area-2-sub-1",
+                  plotOutput("sm_dist", width="100%", height="100%")
+                ),
+                div(
+                  class="plot-area-2-sub-2 shiny-col",
+                  div(
+                    class="bordered-cell",
+                    id="attributesTableArea",
+                    # Attributes/Statistics Table
+                    h4("Attributes/Statistics Summary",
+                       style="margin:0; padding:1px;"),
+                    div(
+                      id="attributesTable",
+                      DTOutput("att_table")
+                    )
+                  ),
+                  div(
+                    # QQ-Plot
+                    style="margin-top:10px;",
+                    plotOutput("qq_plot", height="360px", width="390px")
+                  )
+                )
               )
             )
           ),
           tabPanel(
-            title="Running C.I. Coverage Plot",
+            title="Cumulative & Running Coverage Plots",
             div(
               class="plot-tab",
               div(
-                class="plot-area",
-                plotOutput("rci_plot", width="100%", height="100%")
+                class="plot-area-1",
+                div(
+                  class="plot-area-1-sub",
+                  plotOutput("cdist_plot", width="100%", height="100%")
+                ),
+                div(
+                  style="border-bottom: 1px solid #333333;"
+                ),
+                div(
+                  class="plot-area-1-sub",
+                  plotOutput("rci_plot", width="100%", height="100%")
+                )
               )
             )
           )
-        )
-      ),
-      # Bottom Row
-      div(
-        id="bottomRow",
-        div(
-          # Current Sample's Information
-          div(
-            # Histogram
-          ), 
-          div(
-            # Table 
-          
-          )
-        ),
-        div(
-          style="width:70vh;",
-          # Distribution of Sample Means
-          plotOutput("sm_dist", width="100%")
         )
       )
     )

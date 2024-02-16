@@ -11,7 +11,9 @@
 #sidebarSection {
   display: flex;
   flex-direction: column;
-  min-height: 70vh;
+  height: 75vh;
+  min-height: 628.8px;
+  min-width:205.3px;
   width: 29.2vh;
   padding: 2vh;
   margin-bottom: 1vh;
@@ -24,10 +26,13 @@
 }
 
 #mainSection {
+  min-height:625.85px;
+  min-width:1280px;
   display: flex;
   flex-direction: column;
   margin: 15px;
   margin-bottom:5px;
+  margin-top: 5px;
 }
 
 .bordered-cell {
@@ -35,22 +40,37 @@
   border-radius: 0.5px;
 }
 
-#attributesTableArea {
-  height:40vh; 
-  width:35vh; 
-  margin-right:1.2vh; 
-  background-color: #edf0f7;
-}
-
 .plot-tab {
   border: 1px solid #333333;
   border-top: 0;
 }
 
-.plot-area {
-  width: 145vh;
-  height: 40vh;
+.plot-area-1 {
+  width: 130vh;
+  height: 83vh;
 }
+
+.plot-area-1-sub {
+  height: 41.25vh;
+}
+
+.plot-area-2 {
+  width: 130vh;
+  height: 83vh;
+}
+
+.plot-area-2-sub-1 {
+  width: 75vh;
+  min-width:492.2px;
+}
+
+.plot-area-2-sub-2 {
+  min-width:421.9px;
+  width: 60vh;
+  border-left: 1px solid #333333;
+  padding: 1vh;
+}
+
 
 #tabs.nav-tabs {
   border-bottom: 1px solid #333;
@@ -68,20 +88,31 @@
   border-left-color: #333 !important;
   border-top-color: #333 !important;
   border-right-color: #333 !important;
-  border-bottom-width: 0 !important;
+  border-bottom-color: rgb(0,0,0,0) !important;
   background-color: #fff !important;
   top:0 !important;
 }
 
-#bottomRow {
-  border: 1px solid #333333;
-  border-radius: 0.5px;
-  width: 181.5vh;
-  height: 39vh;
-  margin-top: 1.5vh;
+#attributesTableArea {
+  height:27vh; 
+  width:56vh; 
+  margin:1vh; 
+  padding:1vh;
   background-color: #edf0f7;
 }
 
+#attributesTable {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+  background-color: #ffffff;
+  width: 32vh;
+}
+
+#sampleSummarySection {
+  min-width:351.6px;
+  width:50vh; 
+  min-height:83vh;
+}
 
 .loader {
   border: 16px solid #f3f3f3; /* Light grey */

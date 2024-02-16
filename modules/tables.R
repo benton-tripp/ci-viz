@@ -23,10 +23,20 @@ tables.module <- function(input, output, session, server.env) {
     att.tbl <- dt[, .(
       `# Intervals`=.N, 
       `# Covering Mean`=sum(lg.icm), 
-      `Coverage %`=sum(lg.icm)/.N
+      `Coverage %`=paste0(round(100*sum(lg.icm)/.N, 3),"%")
     )] %>%
       data.table::transpose(keep.names="Attribute") %>%
       setnames("V1", "Statistic")
+    
+    output$att_table <- renderDT({
+      view.datatable(att.tbl, pageLength=3, paging=F, info=F)
+    })
+    
+    # Sample Summary Table
+    
+    
+    
+    # Selected Sample Summary Table
     
     # Name 	  Value
     # -------------
